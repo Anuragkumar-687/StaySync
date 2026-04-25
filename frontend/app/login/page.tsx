@@ -308,7 +308,7 @@ export default function Login() {
           
           <div className="divider">
             <div className="div-l"></div>
-            <span className="div-t">Don't have an account?</span>
+            <span className="div-t">Don&apos;t have an account?</span>
             <div className="div-l"></div>
           </div>
           

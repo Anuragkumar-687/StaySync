@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import api from '@/lib/api';
 import toast from 'react-hot-toast';
@@ -11,12 +11,7 @@ export default function AdminLeaves() {
   const [filter, setFilter] = useState('');
   const [stats, setStats] = useState({ pending: 0, approved: 0, rejected: 0, total: 0 });
 
-  useEffect(() => {
-    fetchLeaves();
-    fetchStats();
-  }, [filter]);
-
-  const fetchLeaves = async () => {
+  const fetchLeaves = useCallback(async () => {
     try {
       const params = filter ? `?status=${filter}` : '';
       const { data } = await api.get(`/leaves${params}`);
@@ -24,16 +19,21 @@ export default function AdminLeaves() {
     } catch (err) {
       console.error(err);
     }
-  };
+  }, [filter]);
 
-  const fetchStats = async () => {
+  const fetchStats = useCallback(async () => {
     try {
       const { data } = await api.get('/leaves/stats');
       setStats(data.data);
     } catch (err) {
       console.error(err);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchLeaves();
+    fetchStats();
+  }, [fetchLeaves, fetchStats]);
 
   const handleAction = async (id: string, status: 'Approved' | 'Rejected', adminNote?: string) => {
     try {

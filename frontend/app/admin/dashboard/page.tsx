@@ -236,7 +236,7 @@ Pending Payments,${stats.payments.pending || 0}
         <div className="ph">
           <div className="ph-left">
             <h1>Admin Overview</h1>
-            <p>Welcome back, <em>{user?.name || 'Admin'}</em>. Here's what's happening today.</p>
+            <p>Welcome back, <em>{user?.name || 'Admin'}</em>. Here&apos;s what&apos;s happening today.</p>
           </div>
           <div className="ph-right hidden sm:flex">
             <div className="date-chip">
@@ -282,7 +282,7 @@ Pending Payments,${stats.payments.pending || 0}
               <div className="sc-badge b-up"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.8"><polyline points="1,8 5,2 9,8"/></svg>+2.4%</div>
             </div>
             <div className="sc-num sm">₹{stats.payments.totalRevenue.toLocaleString()}</div>
-            <div className="sc-lbl">This Month's Revenue</div>
+            <div className="sc-lbl">This Month&apos;s Revenue</div>
           </div>
         </div>
 

@@ -174,7 +174,7 @@ export default function StudentLeaves() {
             )}
           </div>
         )) : (
-          <div className="lv-empty">No leave applications yet. Click "Apply for Leave" to get started.</div>
+          <div className="lv-empty">No leave applications yet. Click &quot;Apply for Leave&quot; to get started.</div>
         )}
       </div>
 

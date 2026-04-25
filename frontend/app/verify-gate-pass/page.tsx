@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-export default function VerifyGatePass() {
+function VerifyGatePassContent() {
   const searchParams = useSearchParams();
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -11,7 +11,7 @@ export default function VerifyGatePass() {
 
   const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
-  const verify = async (token: string) => {
+  const verify = useCallback(async (token: string) => {
     setLoading(true);
     try {
       const res = await fetch(`${API_BASE}/leaves/verify/${token}`);
@@ -22,7 +22,7 @@ export default function VerifyGatePass() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [API_BASE]);
 
   useEffect(() => {
     const token = searchParams.get('token');
@@ -31,7 +31,7 @@ export default function VerifyGatePass() {
     } else {
       setLoading(false);
     }
-  }, [searchParams]);
+  }, [searchParams, verify]);
 
   const handleManualVerify = (e: React.FormEvent) => {
     e.preventDefault();
@@ -121,7 +121,7 @@ export default function VerifyGatePass() {
           ) : (
             <>
               <div style={{ fontSize:'0.9rem', color:'rgba(255,255,255,0.5)', marginBottom:'16px' }}>
-                Scan a student's QR code or enter the token manually:
+                Scan a student&apos;s QR code or enter the token manually:
               </div>
               <form className="gp-form" onSubmit={handleManualVerify}>
                 <input className="gp-input" placeholder="Enter gate pass token…" value={manualToken} onChange={(e) => setManualToken(e.target.value)} />
@@ -132,5 +132,13 @@ export default function VerifyGatePass() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function VerifyGatePass() {
+  return (
+    <Suspense fallback={<div className="gp-page"><div className="gp-loading">Loading...</div></div>}>
+      <VerifyGatePassContent />
+    </Suspense>
   );
 }

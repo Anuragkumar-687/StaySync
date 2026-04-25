@@ -5,12 +5,10 @@ import DashboardLayout from '@/components/layout/DashboardLayout';
 import api from '@/lib/api';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
-import { useSearchParams } from 'next/navigation';
 
 export default function StudentPayments() {
   const [payments, setPayments] = useState<any[]>([]);
   const [loadingId, setLoadingId] = useState<string | null>(null);
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     fetchPayments();
