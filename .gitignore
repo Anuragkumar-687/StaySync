@@ -1,0 +1,29 @@
+# Dependencies
+**/node_modules/
+node_modules/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+*.log
+Thumbs.db
+
+# Environment
+**/.env
+**/.env.local
+**/.env.*.local
+.env
+.env.local
+
+# Build
+**/dist/
+**/.next/
+**/out/
+frontend/.next/
+frontend/out/
+backend/dist/
+
+# Application Specific
+**/invoices/*.pdf
+backend/invoices/*.pdf
