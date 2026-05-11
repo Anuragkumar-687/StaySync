@@ -104,10 +104,6 @@ npm run dev
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License.
-
 ---
 
-Developed with ❤️ by [Anurag](https://github.com/your-username)
+Developed by [Anurag](https://github.com/your-username)
