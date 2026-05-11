@@ -2,7 +2,6 @@
 
 StaySync is a professional, full-stack SaaS application designed to streamline hostel and PG operations. It provides a seamless experience for both administrators and students, featuring AI-powered complaint routing, real-time room management, and secure payment tracking.
 
-![StaySync Preview](https://via.placeholder.com/1200x600/060b18/ffffff?text=StaySync+Management+System)
 
 ## 🚀 Key Features
 
@@ -101,8 +100,6 @@ npm run dev
 
 ### Frontend
 - `NEXT_PUBLIC_API_URL`: Backend API endpoint
-
----
 
 ---
 
